@@ -1,6 +1,7 @@
 <div class="row">
     <div>
-        <h1>{{heroe.nombre}}</h1> <small>{{heroe.aparicion}}</small>
+        <h1>{{heroe.nombre | uppercase}}</h1> 
+        <small>({{heroe.aparicion | date:'y'}})</small>
     </div>
     <img src="assets/img/DC.png" alt="" *ngIf="heroe.casa=='DC'" class="imagenLogo">
     <img src="assets/img/marvel.png" alt="" *ngIf="heroe.casa=='Marvel'" class="imagenLogo">
