@@ -53,3 +53,11 @@
     height: 100px;
     margin-left: auto;
 }
+
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #0e3956;
+    color: #ffffff;
+}

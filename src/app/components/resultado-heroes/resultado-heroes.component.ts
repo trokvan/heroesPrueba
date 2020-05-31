@@ -8,16 +8,18 @@ import {ActivatedRoute} from '@angular/router';
 export class ResultadoHeroesComponent implements OnInit {
   public heroesEncontrados:Heroe[];
   public resultado:boolean;
+  public terminoRecibido:string;
   constructor(
     private _activatedRoute:ActivatedRoute,
     private _heroesService:HeroesService
   ) {
     this._activatedRoute.params.subscribe(params=>{
       this.heroesEncontrados=this._heroesService.buscarHeroes(params['termino']);
-      if(this.heroesEncontrados.length>0)
-        this.resultado=true;
-      else
-        this.resultado=false; 
+      this.terminoRecibido=params['termino'];
+      // if(this.heroesEncontrados.length>0)
+      //   this.resultado=true;
+      // else
+      //   this.resultado=false; 
     });
   }
   

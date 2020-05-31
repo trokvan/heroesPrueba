@@ -1,19 +1,11 @@
-<h1 class="animated fadeIn">AQUÍ SE ENCONTRARÁN TODOS LOS HEROES</h1>
+<h1 class="animated fadeIn">RESULTADOS PARA: {{terminoRecibido}}</h1>
 <div class="card-columns">
-    <div class="card fadeIn fast" *ngFor="let item of heroesEncontrados; let id=index">
-      <!-- con el atributo entre [] indicamos que lo manejará angular, por lo que podemos acceder a la variable sin interpolacion -->
-        <img src="{{item.img}}" class="card-img-top" [alt]="item.nombre">
-        <div class="card-body">
-          <h5 class="card-title">{{item.nombre}}</h5>
-          <p class="card-text">{{item.bio}}</p>
-          <p class="card-text">{{item.casa}}</p>
-          <p class="card-text"><small class="text-muted">{{item.aparicion}}</small></p>
-          <!-- Es necesario poner la / para indicarle que será desde la raiz, sino no encontrará la página -->
-          <!-- <a class="btn btn-block botonPrimario" [routerLink]="['/heroe',id]">Ver más</a> -->
-        </div>
-    </div>
+  <!-- Los heroes que aparezcan aqui tienen la propiedad idx agregada en el servicio para poder saber que heroe se está seleccionando -->
+  <app-heroe-card [item]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroesEncontrados">
+
+  </app-heroe-card>
 </div>
 
-<div class="alert alert-primary" *ngIf="resultado==false">
-    Heroe no encontrado
+<div class="alert alert-primary" *ngIf="heroesEncontrados.length==0">
+  No se encontraron héroes con el término {{terminoRecibido}}
 </div>

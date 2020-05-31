@@ -69,10 +69,14 @@ export class HeroesService{
       let heroesArr:Heroe[]=[];
       termino=termino.toLocaleLowerCase();
 
-      for (let heroe of this.heroes) {
+      for (let i=0; i<this.heroes.length; i++) {
+        let heroe=this.heroes[i];
         let nombre=heroe.nombre.toLocaleLowerCase();
         //IndexOf retorna la posición donde encontró el valor, sino regresa un -1
         if(nombre.indexOf(termino)>=0){
+          /*Agregamos id nuevo para que no tome el indice original, ya que al ver mas del heroe va a tomar el index original por lo que no mostrará
+          el verdadero heroe que estamos seleccionando sino el heroe que este en esa posicion del arreglo original heroes*/
+          heroe.idx=i; 
           heroesArr.push(heroe);
         }
         
@@ -86,4 +90,5 @@ export interface Heroe{
     img:string;
     aparicion:string;
     casa:string;
+    idx?:number;
 }

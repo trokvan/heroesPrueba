@@ -1,16 +1,8 @@
-<h1 class="animated fadeIn">AQUÍ SE ENCONTRARÁN TODOS LOS HEROES</h1>
+<h1 class="animated fadeIn">HEROES</h1>
 <div class="card-columns">
-    <div class="card fadeIn fast" *ngFor="let item of heroes; let id=index">
-      <!-- con el atributo entre [] indicamos que lo manejará angular, por lo que podemos acceder a la variable sin interpolacion -->
-        <img src="{{item.img}}" class="card-img-top" [alt]="item.nombre">
-        <div class="card-body">
-          <h5 class="card-title">{{item.nombre}}</h5>
-          <p class="card-text">{{item.bio}}</p>
-          <p class="card-text">{{item.casa}}</p>
-          <p class="card-text"><small class="text-muted">{{item.aparicion}}</small></p>
-          <!-- Es necesario poner la / para indicarle que será desde la raiz, sino no encontrará la página -->
-          <!-- <a class="btn btn-block botonPrimario" [routerLink]="['/heroe',id]">Ver más</a> -->
-          <button class="btn btn-block botonPrimario" (click)="verHeroe(id)">Ver más</button>
-        </div>
-    </div>
+  <!-- Los outputs podemos escuchar eventos que esten en el compoente hijo -->
+  <!-- <app-heroe-card (heroeSeleccionado)="verHeroe($event)" [index]="id" [item]="heroe" *ngFor="let heroe of heroes; let id=index"> -->
+  <!-- mandamos el heroe actual del ciclo a la variable item del compoente card -->
+  <app-heroe-card [index]="id" [item]="heroe" *ngFor="let heroe of heroes; let id=index">
+  </app-heroe-card>
 </div>
